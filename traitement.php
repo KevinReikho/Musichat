@@ -27,7 +27,7 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
       echo "error code : " ;
       echo $insertion->errorCode();
       echo "<br /> error info : ";
-      echo $insertion->errorInfo();
+      print_r ($insertion->errorInfo());
 
     }
     else{
