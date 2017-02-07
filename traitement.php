@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
             'auteur' => $auteur,
             'message' => $message
         ));
-      echo "at least you tried";
+      echo "at least you tried $auteur $message";
 
     }
     else{
