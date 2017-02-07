@@ -24,7 +24,10 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
             'auteur' => $auteur,
             'message' => $message
         ));
-      echo "at least you tried $auteur $message";
+      echo "error code : " ;
+      echo $insertion->errorCode();
+      echo "<br /> error info : "
+      echo $insertion->errorInfo();
 
     }
     else{
