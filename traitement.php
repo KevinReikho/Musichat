@@ -3,7 +3,7 @@
 // on se connecte à notre base de données
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=musicon', 'root', 'root');
+    $bdd = new PDO('mysql:host=localhost;dbname=musicon', 'musicon', 'musicon');
 }
 catch (Exception $e)
 {
