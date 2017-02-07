@@ -3,7 +3,7 @@
 // on se connecte à notre base de données
 try
 {
-    $bdd = new PDO('mysql:host=localhost;dbname=musicon', 'musicon', 'musicon');
+    $bdd = new PDO('mysql:host=localhost;dbname=musicon', 'musicon', 'musicon', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION ));
 }
 catch (Exception $e)
 {
@@ -24,7 +24,7 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
             'auteur' => $auteur,
             'message' => $message
         ));
-      echo "at least you tried $auteur $message $insertion";
+      echo "at least you tried $auteur $message";
 
     }
     else{
