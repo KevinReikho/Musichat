@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
         // puis on entre les données en base de données :
         $insertion = $bdd->prepare('INSERT INTO message VALUES("", :timestampvalue, :auteur, :message)');
         $insertion->execute(array(
-            'timestampvalue' => time(),
+            'timestampvalue' => "3",
             'auteur' => $auteur,
             'message' => $message
         ));
