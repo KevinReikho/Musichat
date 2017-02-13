@@ -18,12 +18,16 @@ if(isset($_POST['submit'])){ // si on a envoyé des données avec le formulaire
         $message = $_POST['message'];
 
         // puis on entre les données en base de données :
-        $insertion = $bdd->prepare('INSERT INTO message VALUES("", :timestampvalue, :auteur, :message)');
+        $insertion = $bdd->prepare('INSERT INTO message VALUES(null, :timestampvalue, :auteur, :message)');
         $insertion->execute(array(
             'timestampvalue' => time(),
             'auteur' => $auteur,
             'message' => $message
         ));
+      echo "error code : " ;
+      echo $insertion->errorCode();
+      echo "<br /> error info : ";
+      print_r ($insertion->errorInfo());
 
     }
     else{

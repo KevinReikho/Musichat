@@ -9,9 +9,7 @@
 
     <body>
         <div id="messages">
-            <?php
-              include('messages.php');
-            ?>
+            
         </div>
 
 	<form method="POST" action="traitement.php">

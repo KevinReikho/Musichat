@@ -11,11 +11,19 @@ catch (Exception $e)
     die('Erreur : ' . $e->getMessage());
 }
 
+  $timestamp = (int) $_GET['timestamp'];
 
-    // on récupère les messages ayant un id plus grand que celui donné
-    $requete = $bdd->prepare('SELECT * FROM message');
-    $messages = null;
-    $requete->execute();
+  $timestamp = floor(($timestamp/1000)-3600);
+
+      $requete = $bdd->prepare('SELECT * FROM message WHERE date > :timestamp');
+      $messages = null;
+      $requete->execute(array(
+        "timestamp" => $timestamp
+      ));
+
+
+
+
 
     while ($donnees = $requete->fetch()){
    $messages .= "<p id=\"" . $donnees['id_message'] . "\">" . $donnees['auteur'] . " dit : " . $donnees['message'] . "</p>";
