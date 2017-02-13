@@ -17,7 +17,7 @@ $('#envoi').click(function(e){
 
 function init() {
   $.ajax({
-      url : "messages.php",
+      url : "messages.php?timestamp=" + $.now(),
       type : 'GET',
       success : function(html){
           $('#messages').prepend(html); // on veut ajouter les nouveaux messages au début du bloc #messages
@@ -29,12 +29,12 @@ init();
 
 function charger(){
 
-  var firstID = $('#messages p:last').attr('id');
+
 
     setTimeout( function(){
         // on lance une requête AJAX
         $.ajax({
-            url : "messages.php",
+            url : "messages.php?timestamp=" + $.now(),
             type : 'GET',
             success : function(html){
                 $('#messages').html(html); // on veut ajouter les nouveaux messages au début du bloc #messages

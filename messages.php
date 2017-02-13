@@ -11,13 +11,18 @@ catch (Exception $e)
     die('Erreur : ' . $e->getMessage());
 }
 
+  $timestamp = (int) $_GET['timestamp'];
 
+  $timestamp = floor(($timestamp/1000)-3600);
 
-      $requete = $bdd->prepare('SELECT * FROM message ');
+      $requete = $bdd->prepare('SELECT * FROM message WHERE date > :timestamp');
       $messages = null;
-      $requete->execute();
+      $requete->execute(array(
+        "timestamp" => $timestamp
+      ));
 
-  
+
+
 
 
     while ($donnees = $requete->fetch()){
