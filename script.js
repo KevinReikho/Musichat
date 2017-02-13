@@ -1,19 +1,36 @@
+function send(e){
+  e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+
+  var auteur = encodeURIComponent( $('#auteur').val() ); // on sécurise les données
+  var message = encodeURIComponent( $('#message').val() );
+
+  if(auteur != "" && message != ""){ // on vérifie que les variables ne sont pas vides
+      $.ajax({
+          url : "traitement.php", // on donne l'URL du fichier de traitement
+          type : "POST", // la requête est de type POST
+          data : "auteur=" + auteur + "&message=" + message + "&submit=1"// et on envoie nos données
+      });
+  $('#message').val('')
+
+  }
+}
+
 $('#envoi').click(function(e){
-    e.preventDefault(); // on empêche le bouton d'envoyer le formulaire
+send(e);
+});
 
-    var auteur = encodeURIComponent( $('#auteur').val() ); // on sécurise les données
-    var message = encodeURIComponent( $('#message').val() );
 
-    if(auteur != "" && message != ""){ // on vérifie que les variables ne sont pas vides
-        $.ajax({
-            url : "traitement.php", // on donne l'URL du fichier de traitement
-            type : "POST", // la requête est de type POST
-            data : "auteur=" + auteur + "&message=" + message + "&submit=1"// et on envoie nos données
-        });
-    $('#message').val('')
-
+$('textarea').bind("enterKey",function(e){
+send(e);
+});
+$('textarea').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
     }
 });
+
+
 
 function init() {
   $.ajax({
