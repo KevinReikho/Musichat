@@ -11,7 +11,7 @@ $('#envoi').click(function(e){
             data : "auteur=" + auteur + "&message=" + message + "&submit=1"// et on envoie nos données
         });
 
-        $('#messages').append("<p>" + auteur + " dit : " + message + "</p>");
+
     }
 });
 
@@ -34,10 +34,10 @@ function charger(){
     setTimeout( function(){
         // on lance une requête AJAX
         $.ajax({
-            url : "messages.php?id=" + firstID,
+            url : "messages.php",
             type : 'GET',
             success : function(html){
-                $('#messages').prepend(html); // on veut ajouter les nouveaux messages au début du bloc #messages
+                $('#messages').html(html); // on veut ajouter les nouveaux messages au début du bloc #messages
             }
         });
 
