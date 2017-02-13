@@ -10,7 +10,7 @@ $('#envoi').click(function(e){
             type : "POST", // la requête est de type POST
             data : "auteur=" + auteur + "&message=" + message + "&submit=1"// et on envoie nos données
         });
-
+    $('#message').val('')
 
     }
 });
